@@ -102,7 +102,7 @@ const videoSrc = computed(() => {
   if (isMultiple) {
     switch (eventType) {
       case 'follow':
-        return `${basePath}follow{fileExtension}.webm`;
+        return `${basePath}follow${fileExtension}.webm`;
 
       case 'subscribe':
         return `${basePath}subscribe${fileExtension}.webm`;
