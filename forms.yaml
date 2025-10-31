@@ -1,0 +1,216 @@
+schema_version: 1
+id: %extensionId%
+inputs:
+  - id: tabs
+    tabs:
+      - label: Direction
+        fields:
+          - type: dropdown
+            id: direction
+            attributes:
+              label: Direction
+              value: %direction% # horizontal
+            options:
+              - label: Horizontal
+                value: horizontal
+              - label: Vertical
+                value: vertical
+          - type: dropdown
+            id: alignment
+            attributes:
+              label: Alignment
+              value: %alignment% # left
+            options:
+              - label: Left
+                value: left
+                if: "['horizontal'].includes(values.direction)"
+              - label: Right
+                value: right
+                if: "['horizontal'].includes(values.direction)"
+              - label: Top
+                value: top
+                if: "['vertical'].includes(values.direction)"
+              - label: Bottom
+                value: bottom
+                if: "['vertical'].includes(values.direction)"
+      - label: Animation
+        fields:
+          - id: event-animation
+            type: boolean
+            attributes:
+              label: Activate animated event panels
+              description: Toggle on for animated event panels
+              value: %enableVideoAnimations% # true
+      - label: Colors
+        fields:
+          - type: select
+            id: event-colors
+            attributes:
+              type: grid
+              multiple: false
+              value: [ default ]
+            options:
+              - label: %multipleEventsLabel%
+                value: default
+                image: video/multipleEvents.png
+              - label: %followLabel%
+                value: follow
+                image: video/follow.png
+              - label: %subscribeLabel%
+                value: subscribe
+                image: video/subscribe.png
+              - label: %subGiftLabel%
+                value: subgift
+                image: video/subgift.png
+              - label: %cheerLabel%
+                value: cheer
+                image: video/cheer.png
+              - label: %raidLabel%
+                value: raid
+                image: video/raid.png
+              - label: %hypeTrainLabel%
+                value: hypetrain
+                image: video/hypetrain.png
+              - label: %shoutoutLabel%
+                value: shoutout
+                image: video/shoutout.png
+              - label: %charityDonationLabel%
+                value: charity-donation
+                image: video/charity-donation.png
+              - label: %donationLabel%
+                value: donation
+                image: video/donation.png
+              - label: %channelPointsLabel%
+                value: channel-points
+                image: video/channel-points.png
+              - label: %superchatLabel%
+                value: superchat
+                image: video/superchat.png
+              - label: %superstickerLabel%
+                value: supersticker
+                image: video/supersticker.png
+      - label: Spacing
+        fields:
+          - id: event-spacing
+            type: input
+            attributes:
+              type: number
+              label: Event Spacing
+              value: %eventSpacing% # 15
+      - label: Font
+        fields:
+          - type: font-settings
+            id: title-font-settings
+            attributes:
+              label: Title Font Settings
+              value:
+                font-color: %titleFontColor% # "#cdbf92"
+                font-family: %titleFontFamily% #Arvo
+                font-weight: %titleFontWeight% # 400
+                font-size: %titleFontSize% # 22
+                text-align: %titleFontTextAlign% # center
+                font-style: %titleFontTextTransform% # normal
+                letter-spacing: 0
+                line-height: 1.2
+                text-indent: 0
+          - type: font-settings
+            id: subtitle-font-settings
+            attributes:
+              label: Subtitle Font Settings
+              value:
+                font-color: %numberFontColor% # "#cdbf92"
+                font-family: %numberFontFamily% # Arvo
+                font-weight: %numberFontWeight% # 400
+                font-size: %numberFontSize% # 22
+                text-align: %numberFontTextAlign% # center
+                font-style: %numberFontTextTransform% # normal
+                letter-spacing: 0
+                line-height: 1.2
+                text-indent: 0
+      - label: Events
+        fields:
+          - id: display-time
+            type: input
+            attributes:
+              optional: true
+              type: number
+              label: Display Time (seconds)
+              value:
+                toggled: true
+                value: %eventDisplayTime% # 20
+          - id: max-events
+            type: input
+            attributes:
+              type: number
+              label: Max Events
+              value: %maxEventsDisplayed% # 5
+          - id: twitch-events
+            type: checkbox
+            attributes:
+              label: Twitch Events
+              value:
+                follow: true
+                subscribe: true
+                re-subscribe: true
+                gift-subscribe: true
+                cheer: true
+                raid: true
+                channel.hype_train.begin: true
+                channel.shoutout.receive: true
+                channel.channel_points_custom_reward_redemption.add: true
+                charity-donation: true
+            options:
+              - label: Follow
+                value: follow
+              - label: Subscribe
+                value: subscribe
+              - label: Re Subscribe
+                value: re-subscribe
+              - label: Gift-Subscribe
+                value: gift-subscribe
+              - label: Cheer
+                value: cheer
+              - label: Raid
+                value: raid
+              - label: Hype Train
+                value: channel.hype_train.begin
+              - label: Shoutout
+                value: channel.shoutout.receive
+              - label: Channel Points
+                value: channel.channel_points_custom_reward_redemption.add
+              - label: Charity Donation
+                value: charity-donation
+          - id: youtube-events
+            type: checkbox
+            attributes:
+              label: YouTube Events
+              value:
+                follow: true
+                subscribe: true
+                re-subscribe: true
+                gift-subscribe: true
+                superchat: true
+                supersticker: true
+            options:
+              - label: Subscribe
+                value: follow
+              - label: Membership
+                value: subscribe
+              - label: Membership Milestone
+                value: re-subscribe
+              - label: Gifted Memberships
+                value: gift-subscribe
+              - label: Super Chat
+                value: superchat
+              - label: Super Sticker
+                value: supersticker
+          - id: own3d-events
+            type: checkbox
+            attributes:
+              label: OWN3D Events
+              value:
+                donation: true
+            options:
+              - label: Donation
+                value: donation
+    type: tabs

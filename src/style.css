@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.video-container {
+    position: relative;
+    width: 200px;
+    height: 200px; /* Volle Höhe des Viewports */
+    overflow: hidden;
+}
+  
+.video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 200px;
+    min-height: 200px;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+  
+.eventItemStyle-bg-img {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+}
+
+.event-content{
+    height: 100%;
+    width: 100%;
+}
+
+.event-icon {
+    position: absolute;
+    top: %iconTranslateY%px;
+    left: %iconTranslateX%px;
+    transform: %iconTransform%;
+}
+.event-icon i {
+    font-size:%iconScale%px !important;
+    line-height: %iconScale%px !important;
+    color: #cdbf92 !important;
+}
+.event-icon i.event-type-follow {
+    color: %followIconColor%; /* red */
+}
+.event-icon i.event-type-subscribe {
+    color: %subscribeIconColor%; /* orange */
+}
+.event-icon i.event-type-subgift {
+    color: %subgiftIconColor%; /* orange */
+}
+.event-icon i.event-type-cheer {
+    color: %cheerIconColor%; /* pink */
+}
+.event-icon i.event-type-raid {
+    color: %raidIconColor%; /* purple */
+}
+.event-icon i.event-type-hype-train {
+    color: %hypeTrainIconColor%; /* blue */
+}
+.event-icon i.event-type-shoutout {
+    color: %shoutoutIconColor%; /* blue */
+}
+.event-icon i.event-type-charity-donation {
+    color: %charityDonationIconColor%; /* green */
+}
+.event-icon i.event-type-donation {
+    color: %donationIconColor%; /* green */
+}
+.event-icon i.event-type-reward-redemption {
+    color: %channelPointsIconColor%; /* cyan */
+}
+.event-icon i.event-type-superchat {
+    color: %superChatIconColor%; /* deepblue */
+}
+.event-icon i.event-type-supersticker {
+    color: %superStickerIconColor%; /* purple */
+}
+
+.event-text {
+    position: absolute;
+    display: block;
+    margin: 31px auto 0;
+    text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
+    top: %titleTranslateY%px;
+    left: %titleTranslateX%px;
+    transform: %titleTransform%;
+}
+
+.event-text span {
+    
+}
+
+.event-sub-text {
+    position: absolute;
+    top: %numberTranslateY%px;
+    left: %numberTranslateX%px;
+    transform: %numberTransform%;
+    text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
+}
