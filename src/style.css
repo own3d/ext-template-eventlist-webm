@@ -38,8 +38,8 @@
 
 .event-icon {
     position: absolute;
-    top: %iconTranslateY%px;
-    left: %iconTranslateX%px;
+    top: %iconTranslateY%;
+    left: %iconTranslateX%;
     transform: %iconTransform%;
 }
 .event-icon i {
@@ -89,8 +89,8 @@
     display: block;
     margin: 31px auto 0;
     text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
-    top: %titleTranslateY%px;
-    left: %titleTranslateX%px;
+    top: %titleTranslateY%;
+    left: %titleTranslateX%;
     transform: %titleTransform%;
 }
 
@@ -100,8 +100,8 @@
 
 .event-sub-text {
     position: absolute;
-    top: %numberTranslateY%px;
-    left: %numberTranslateX%px;
+    top: %numberTranslateY%;
+    left: %numberTranslateX%;
     transform: %numberTransform%;
     text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
 }

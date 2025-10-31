@@ -31,7 +31,7 @@ body {
 import { useAuth } from '@own3d/sdk/auth'
 import { useContext } from '@own3d/sdk/context'
 import { useSocket } from '@own3d/sdk/socket'
-import { computed, ref, inject } from 'vue'
+import { computed, ref, inject, onMounted } from 'vue'
 import EventItem from './components/EventItem.vue'
 import { ExtensionContext, LivingEvent, NotifySub } from './types'
 import { cleanup, fakeNotifySubEvent, pushEventInQueue } from './support.ts'
@@ -73,30 +73,33 @@ on('notifysub', (e: NotifySub) => {
   pushEventInQueue(e, events, eventsQueue, context.value)
 })
 
-setInterval(() => {
-  if (!context.value) return
-  // remove an event after it dies
-  cleanup(context.value, events)
+onMounted(() => {
+  setInterval(() => {
+    if (!context.value) return
+    // remove an event after it dies
+    cleanup(context.value, events)
 
-  const {demo_mode, values} = context.value
+    const {demo_mode, values} = context.value
 
-  // demo mode
-  if (demo_mode) {
-    const event = fakeNotifySubEvent() // todo implement for all platforms
-    pushEventInQueue(event, events, eventsQueue, context.value)
-  }
-
-  // move events from queue to events
-  if (eventsQueue.value.length > 0) {
-    events.value.push(eventsQueue.value.shift() as NotifySub)
-  }
-
-  const maxEvents = values['max-events'] ?? 10
-  // shift all events that are over the limit
-  if (events.value.length > maxEvents) {
-    for (let i = 0; i < events.value.length - maxEvents; i++) {
-      events.value.shift()
+    // demo mode
+    if (demo_mode) {
+      const event = fakeNotifySubEvent() // todo implement for all platforms
+      pushEventInQueue(event, events, eventsQueue, context.value)
     }
-  }
-}, 1000)
+
+    // move events from queue to events
+    if (eventsQueue.value.length > 0) {
+      events.value.push(eventsQueue.value.shift() as NotifySub)
+    }
+
+    const maxEvents = values['max-events'] ?? 10
+    // shift all events that are over the limit
+    if (events.value.length > maxEvents) {
+      for (let i = 0; i < events.value.length - maxEvents; i++) {
+        events.value.shift()
+      }
+    }
+  }, 1000)
+})
+
 </script>
