@@ -23,10 +23,10 @@
             :style="eventIconStyle"
           />
         </div>
-        <div class="event-text" :style="eventIconTextStyle">
+        <div class="event-text">
           <span v-html="mainEventText" />
         </div>
-        <div class="event-sub-text" :style="eventIconTextStyle">
+        <div class="event-sub-text">
           <span :style="subTextStyle" v-html="subEventText" />
         </div>
       </div>
@@ -327,6 +327,17 @@ const subTextStyle = computed(() => {
     textShadow: `${glowColor} 0px 0px ${radiusValue}rem`,
   }
 })
+
+const eventIconStyle = computed(() => {
+      const {values} = props.context
+      const size = values['event-icon-size'] || 40
+      const color = values['event-icon-color'] || '#cdbf92'
+      return {
+        fontSize: `${size}px`,
+        color: color,
+      }
+    })
+}
 
     const eventTypeClass = computed(() => {
       const typeMap = {

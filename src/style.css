@@ -45,43 +45,43 @@
 .event-icon i {
     font-size:%iconScale%px !important;
     line-height: %iconScale%px !important;
-    color: #cdbf92 !important;
+    color: #cdbf92;
 }
 .event-icon i.event-type-follow {
-    color: %followIconColor%; /* red */
+    color: %followIconColor% !important; /* red */
 }
 .event-icon i.event-type-subscribe {
-    color: %subscribeIconColor%; /* orange */
+    color: %subscribeIconColor% !important; /* orange */
 }
 .event-icon i.event-type-subgift {
-    color: %subgiftIconColor%; /* orange */
+    color: %subgiftIconColor% !important; /* orange */
 }
 .event-icon i.event-type-cheer {
-    color: %cheerIconColor%; /* pink */
+    color: %cheerIconColor% !important; /* pink */
 }
 .event-icon i.event-type-raid {
-    color: %raidIconColor%; /* purple */
+    color: %raidIconColor% !important; /* purple */
 }
 .event-icon i.event-type-hype-train {
-    color: %hypeTrainIconColor%; /* blue */
+    color: %hypeTrainIconColor% !important; /* blue */
 }
 .event-icon i.event-type-shoutout {
-    color: %shoutoutIconColor%; /* blue */
+    color: %shoutoutIconColor% !important; /* blue */
 }
 .event-icon i.event-type-charity-donation {
-    color: %charityDonationIconColor%; /* green */
+    color: %charityDonationIconColor% !important; /* green */
 }
 .event-icon i.event-type-donation {
-    color: %donationIconColor%; /* green */
+    color: %donationIconColor% !important; /* green */
 }
 .event-icon i.event-type-reward-redemption {
-    color: %channelPointsIconColor%; /* cyan */
+    color: %channelPointsIconColor% !important; /* cyan */
 }
 .event-icon i.event-type-superchat {
-    color: %superChatIconColor%; /* deepblue */
+    color: %superChatIconColor% !important; /* deepblue */
 }
 .event-icon i.event-type-supersticker {
-    color: %superStickerIconColor%; /* purple */
+    color: %superStickerIconColor% !important; /* purple */
 }
 
 .event-text {
