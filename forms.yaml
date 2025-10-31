@@ -1,5 +1,6 @@
 schema_version: 1
 id: %extensionId%
+has_demo_mode: true
 inputs:
   - id: tabs
     tabs:

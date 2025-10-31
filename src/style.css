@@ -87,7 +87,6 @@
 .event-text {
     position: absolute;
     display: block;
-    margin: 31px auto 0;
     text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
     top: %titleTranslateY%;
     left: %titleTranslateX%;
