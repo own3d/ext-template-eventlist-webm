@@ -50,43 +50,43 @@ inputs:
               multiple: false
               value: [ default ]
             options:
-              - label: '%multipleEventsLabel%'
+              - label: %multipleEventsLabel%
                 value: default
                 image: video/multipleEvents.png
-              - label: '%followLabel%'
+              - label: %followLabel%
                 value: follow
                 image: video/follow.png
-              - label: '%subscribeLabel%'
+              - label: %subscribeLabel%
                 value: subscribe
                 image: video/subscribe.png
-              - label: '%subGiftLabel%'
+              - label: %subGiftLabel%
                 value: subgift
                 image: video/subgift.png
-              - label: '%cheerLabel%'
+              - label: %cheerLabel%
                 value: cheer
                 image: video/cheer.png
-              - label: '%raidLabel%'
+              - label: %raidLabel%
                 value: raid
                 image: video/raid.png
-              - label: '%hypeTrainLabel%'
+              - label: %hypeTrainLabel%
                 value: hypetrain
                 image: video/hypetrain.png
-              - label: '%shoutoutLabel%'
+              - label: %shoutoutLabel%
                 value: shoutout
                 image: video/shoutout.png
-              - label: '%charityDonationLabel%'
+              - label: %charityDonationLabel%
                 value: charity-donation
                 image: video/charity-donation.png
-              - label: '%donationLabel%'
+              - label: %donationLabel%
                 value: donation
                 image: video/donation.png
-              - label: '%channelPointsLabel%'
+              - label: %channelPointsLabel%
                 value: channel-points
                 image: video/channel-points.png
-              - label: '%superchatLabel%'
+              - label: %superchatLabel%
                 value: superchat
                 image: video/superchat.png
-              - label: '%superstickerLabel%'
+              - label: %superstickerLabel%
                 value: supersticker
                 image: video/supersticker.png
       - label: Spacing
