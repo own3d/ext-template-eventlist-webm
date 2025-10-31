@@ -337,7 +337,7 @@ const eventIconStyle = computed(() => {
         color: color,
       }
     })
-}
+
 
     const eventTypeClass = computed(() => {
       const typeMap = {
