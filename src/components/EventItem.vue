@@ -24,7 +24,7 @@
           />
         </div>
         <div class="event-text">
-          <span v-html="mainEventText" />
+          <span :style="titleTextStyle" v-html="mainEventText" />
         </div>
         <div class="event-sub-text">
           <span :style="subTextStyle" v-html="subEventText" />
@@ -311,6 +311,22 @@ const textStyle = (
   return style
 }
 
+const titleTextStyle = computed(() => {
+  /*
+   const radius =  this.numberFontGlowIntensity ? this.numberFontGlowIntensity/100 : 0.8;
+        return `color: ${this.numberFontColor}; font-family: &quot;${this.numberFontFamily}&quot;; font-weight: ${this.numberFontWeight}; font-size: ${this.numberFontSize}px; text-align: ${this.numberFontTextAlign}; font-style: normal; line-height: 2.1; text-indent: 0px; letter-spacing: 0px; text-transform: ${this.numberFontTextTransform}; text-shadow: ${this.numberFontGlowColor} 0px 0px ${radius}rem;`
+    
+   */
+  const {values} = props.context
+  const fontSettings = values['title-font-settings']
+  const glowColor = '#000000'
+  const glowIntensity =  0.8
+  const radiusValue = glowIntensity ? glowIntensity / 100 : 0.8
+  return {
+    ...textStyle(fontSettings),
+    textShadow: `${glowColor} 0px 0px ${radiusValue}rem`,
+  }
+})
 const subTextStyle = computed(() => {
   /*
    const radius =  this.numberFontGlowIntensity ? this.numberFontGlowIntensity/100 : 0.8;
@@ -318,9 +334,9 @@ const subTextStyle = computed(() => {
     
    */
   const {values} = props.context
-  const fontSettings = values['font-settings']
-  const glowColor = values['subtext-font-glow-color'] || '#000000'
-  const glowIntensity = values['subtext-font-glow-intensity'] || 0.8
+  const fontSettings = values['subtitle-font-settings']
+  const glowColor =  '#000000'
+  const glowIntensity =  0.8
   const radiusValue = glowIntensity ? glowIntensity / 100 : 0.8
   return {
     ...textStyle(fontSettings),
