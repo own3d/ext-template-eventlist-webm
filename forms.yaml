@@ -41,6 +41,12 @@ inputs:
               label: Activate animated event panels
               description: Toggle on for animated event panels
               value: %enableVideoAnimations% # true
+          - id: enable-movement-animations
+            type: boolean
+            attributes:
+              label: Activate animations for items
+              description: Toggle on for items animations
+              value: %enableMovementAnimations% # true
       - label: Variations
         if: %showVariationTab% === true
         fields:

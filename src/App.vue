@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="context" :class="['flex overflow-hidden w-screen h-screen', {
+    <transition-group tag="div" :name="transitionName" v-if="context" :class="['flex overflow-hidden w-screen h-screen', {
     'flex-row justify-end': context.values['direction'] === 'horizontal' && context.values['alignment'] === 'right',
     'flex-row-reverse justify-end': context.values['direction'] === 'horizontal' && context.values['alignment'] === 'left',
     // vertical top & bottom
@@ -17,7 +17,7 @@
             :context="context"
         />
       </div>
-    </div>
+    </transition-group>
   </div>
 </template>
 
@@ -102,4 +102,25 @@ onMounted(() => {
   }, 1000)
 })
 
+const transitionName = computed(()=>{
+  const { values} = context.value
+  const  enableMovementAnimations = values['enable-movement-animations']
+  if (enableMovementAnimations) {
+    return 'items-slide'
+  }
+  return ''
+})
+
 </script>
+
+<style scoped>
+.items-slide-enter-active, .items-slide-leave-active,.items-slide-list-move {
+  transition: all 0.5s ease;
+}
+.items-slide-enter-from, .items-slide-leave-to {
+  opacity: 0;
+}
+.items-slide-leave-active {
+  position: absolute;
+}
+</style>
