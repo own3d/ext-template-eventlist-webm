@@ -7,8 +7,8 @@
 
     <!-- Event-Container -->
     <div
-      ref="eventItem"
       :class="[
+         'animate-timeline-entry', 
         'flex',
         {
           'justify-end': ['top-right', 'bottom-right'].includes(context.values['alignment']),
@@ -24,10 +24,17 @@
           />
         </div>
         <div class="event-text">
-          <span :style="titleTextStyle" v-html="mainEventText" />
+          <span :style="titleTextStyle" >
+            <div style="display:inline-block; text-align:center;" :style="titleFontSize ? {fontSize:titleFontSize+'px'} : {}">${titleTextContent}</div>
+          </span>
         </div>
         <div class="event-sub-text">
-          <span :style="subTextStyle" v-html="subEventText" />
+          <span :style="subTextStyle" >
+            <div>
+              <span v-if="showXMark" class="opacity-50"> × </span>
+              {{ subTitleContent }}
+            </div>
+          </span>
         </div>
       </div>
     </div>
@@ -52,39 +59,6 @@ const props = defineProps<{
 
 const {ensureFont} = useFontStore()
 
-const eventItem = ref<HTMLElement | null>(null)
-
-onMounted(() => {
-  const {clientHeight, clientWidth} = eventItem.value
-  const {direction, alignment} = props.context.values
-  
-
-  if (direction === 'horizontal' && alignment === 'left') {
-    gsap.fromTo(eventItem.value, {
-      scale: 0.5, opacity: 0, rotationX: -30
-    }, {
-      scale: 1, opacity: 1, duration: 1, rotationX: 0, ease: "power2.out"
-    })
-  } else if (direction === 'horizontal' && alignment === 'right') {
-    gsap.fromTo(eventItem.value, {
-      scale: 0.5, opacity: 0, rotationX: -30
-    }, {
-      scale: 1, opacity: 1, duration: 1, rotationX: 0, ease: "power2.out" 
-    })
-  } else if (direction === 'vertical' && alignment === 'top') {
-    gsap.fromTo(eventItem.value, {
-      scale: 0.5, opacity: 0, rotationX: -30
-    }, {
-      scale: 1, opacity: 1, duration: 1, rotationX: 0, ease: "power2.out"
-    })
-  } else if (direction === 'vertical' && alignment === 'bottom') {
-    gsap.fromTo(eventItem.value, {
-      scale: 0.5, opacity: 0, rotationX: -30
-    }, {
-      scale: 1, opacity: 1, duration: 1, rotationX: 0, ease: "power2.out"
-    })
-  }
-})
 
 const bgVideo = ref<HTMLVideoElement | null>(null);
 
@@ -163,7 +137,6 @@ onMounted(() => {
   }
 });
 
-const eventColor = props.context.values['event-colors'][0] || 'default'; // Fallback-Wert falls nicht gesetzt
 
 const eventIconTextStyle = computed(() => {
   const {values} = props.context
@@ -173,60 +146,73 @@ const eventIconTextStyle = computed(() => {
   }
 })
 
-const mainEventText = computed(() => {
+const titleTextContent = computed(() => {
   const event = props.event
-
   let name = event.event.name;
-  let scaledName = name.length > 16
-      ? `<div style="font-size:13px; display:inline-block; text-align:center;">${name}</div>`
-      : name.length > 10
-          ? `<div style="font-size:16px; display:inline-block; text-align:center;">${name}</div>`
-          : name;
-
-  let text = '';
-
+  let text = ''
   switch (event.subscription.type) {
     case 'follow':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'subscribe':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 're-subscribe':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'gift-subscribe':
       text = `${event.event.gifter}`;
       break;
     case 'cheer':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'raid':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'channel.hype_train.begin':
       text = 'Hype Train';
       break;
     case 'channel.shoutout.receive':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'channel.channel_points_custom_reward_redemption.add':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     case 'charity-donation':
-      text = `${scaledName}`;
+      text = `${name}`;
       break;
     default:
       text = '';
   }
-
-  return text;
+  return text
 })
 
-const subEventText = computed(() => {
+const titleFontSize = computed(() => {
+  if (!titleTextContent.value) return null
+  if (titleTextContent.value.length > 16) {
+    return 13
+  } else if (titleTextContent.value.length > 10) {
+    return 16
+  } 
+  return null
+})
+
+const EVENTS_WITH_X_MARK = [
+  're-subscribe',
+  'gift-subscribe',
+  'cheer',
+  'raid',
+  'channel.channel_points_custom_reward_redemption.add',
+  'charity-donation',
+];
+const showXMark = computed(() => {
+  return EVENTS_WITH_X_MARK.includes(props.event.subscription.type);
+}) 
+
+const subTitleContent = computed(() => {
   const event = props.event
-  
-  let text = '';
+
+  let text;
 
   switch (event.subscription.type) {
     case 'follow':
@@ -237,16 +223,16 @@ const subEventText = computed(() => {
       break;
     case 're-subscribe':
       const amount = event.event.months ?? 1;
-      text = `<div><span class="opacity-50"> × </span>${amount}</div>`;
+      text = `× ${amount}`;
       break;
     case 'gift-subscribe':
-      text = `<div><span class="opacity-50"> × </span>${event.event.amount}</div>`;
+      text = `× ${event.event.amount}`;
       break;
     case 'cheer':
-      text = `<div><span class="opacity-50"> × </span>${event.event.amount}</div>`;
+      text = `× ${event.event.amount}`;
       break;
     case 'raid':
-      text = `<div><span class="opacity-50"> × </span>${event.event.count}</div>`;
+      text = `× ${event.event.count}`;
       break;
     case 'channel.hype_train.begin':
       text = '';
@@ -255,10 +241,10 @@ const subEventText = computed(() => {
       text = ``;
       break;
     case 'channel.channel_points_custom_reward_redemption.add':
-      text = `<div><span class="opacity-50"> × </span>${event.event.reward_cost}</div>`;
+      text = `× ${event.event.reward_cost}`;
       break;
     case 'charity-donation':
-      text = `<div><span class="opacity-50"> × </span>${event.event.amount} ${event.event.currency}</div>`;
+      text = `× ${event.event.amount} ${event.event.currency}`;
       break;
     default:
       text = '';
@@ -266,7 +252,6 @@ const subEventText = computed(() => {
 
   return text;
 })
-
 
 const textStyle = (
     fontSettings: FontSettings | undefined | null,
