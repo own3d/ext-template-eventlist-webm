@@ -1,6 +1,5 @@
 schema_version: 1
 id: %extensionId%
-has_demo_mode: true
 inputs:
   - id: tabs
     tabs:
@@ -42,7 +41,8 @@ inputs:
               label: Activate animated event panels
               description: Toggle on for animated event panels
               value: %enableVideoAnimations% # true
-      - label: Colors
+      - label: Variations
+        if: %showVariationTab% === true
         fields:
           - type: select
             id: event-colors

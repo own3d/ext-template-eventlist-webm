@@ -4,6 +4,7 @@ name: %extensionName%
 version: %extensionVersion%
 description: %extensionDescription%
 summary: %extensionDescription%
+has_demo_mode: true
 store_presence:
   images:
     logo: assets/own3d.svg
