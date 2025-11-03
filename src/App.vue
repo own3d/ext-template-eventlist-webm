@@ -120,7 +120,4 @@ const transitionName = computed(()=>{
 .items-slide-enter-from, .items-slide-leave-to {
   opacity: 0;
 }
-.items-slide-leave-active {
-  position: absolute;
-}
 </style>
