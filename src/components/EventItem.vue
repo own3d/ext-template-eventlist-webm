@@ -25,7 +25,9 @@
         </div>
         <div class="event-text">
           <span :style="titleTextStyle" >
-            <div style="display:inline-block; text-align:center;" :style="titleFontSize ? {fontSize:titleFontSize+'px'} : {}">${titleTextContent}</div>
+            <div style="display:inline-block; text-align:center;" :style="titleFontSize ? {fontSize:titleFontSize+'px'} : {}">
+              {{titleTextContent}}
+            </div>
           </span>
         </div>
         <div class="event-sub-text">
@@ -223,13 +225,13 @@ const subTitleContent = computed(() => {
       break;
     case 're-subscribe':
       const amount = event.event.months ?? 1;
-      text = `× ${amount}`;
+      text = `${amount}`;
       break;
     case 'gift-subscribe':
-      text = `× ${event.event.amount}`;
+      text = `${event.event.amount}`;
       break;
     case 'cheer':
-      text = `× ${event.event.amount}`;
+      text = `${event.event.amount}`;
       break;
     case 'raid':
       text = `× ${event.event.count}`;
@@ -241,10 +243,10 @@ const subTitleContent = computed(() => {
       text = ``;
       break;
     case 'channel.channel_points_custom_reward_redemption.add':
-      text = `× ${event.event.reward_cost}`;
+      text = `${event.event.reward_cost}`;
       break;
     case 'charity-donation':
-      text = `× ${event.event.amount} ${event.event.currency}`;
+      text = `${event.event.amount} ${event.event.currency}`;
       break;
     default:
       text = '';
