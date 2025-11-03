@@ -114,7 +114,7 @@ const transitionName = computed(()=>{
 </script>
 
 <style scoped>
-.items-slide-enter-active, .items-slide-leave-active,.items-slide-list-move {
+.items-slide-enter-active, .items-slide-leave-active,.items-slide-move {
   transition: all 0.5s ease;
 }
 .items-slide-enter-from, .items-slide-leave-to {
