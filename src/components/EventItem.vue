@@ -24,18 +24,13 @@
           />
         </div>
         <div class="event-text">
-          <span :style="titleTextStyle" >
-            <div style="display:inline-block; text-align:center;" :style="titleFontSize ? {fontSize:titleFontSize+'px'} : {}">
-              {{titleTextContent}}
-            </div>
+          <span :style="{...titleTextStyle, ...(titleFontSize ? {fontSize: titleFontSize+'px'} : {}), display: 'inline-block', textAlign: 'center'}">
+            {{titleTextContent}}
           </span>
         </div>
         <div class="event-sub-text">
-          <span :style="subTextStyle" >
-            <div>
-              <span v-if="showXMark" class="opacity-50"> × </span>
-              {{ subTitleContent }}
-            </div>
+          <span :style="subTextStyle">
+            <span v-if="showXMark" class="opacity-50"> × </span>{{ subTitleContent }}
           </span>
         </div>
       </div>
