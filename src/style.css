@@ -7,8 +7,8 @@
 
 .video-container {
     position: relative;
-    width: 200px;
-    height: 200px; /* Volle Höhe des Viewports */
+    width: %width%;
+    height: %height%; /* Volle Höhe des Viewports */
     overflow: hidden;
 }
   
@@ -16,10 +16,10 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 200px;
-    min-height: 200px;
-    width: 200px;
-    height: 200px;
+    min-width: %width%;
+    min-height: %height%;
+    width: %width%;
+    height: %height%;
     transform: translate(-50%, -50%);
     object-fit: cover;
     z-index: -1;
@@ -29,8 +29,8 @@
     position: relative;
     z-index: 1;
     text-align: center;
-    width: 200px;
-    height: 200px;
+    width: %width%;
+    height: %height%;
 }
 
 .event-content{
