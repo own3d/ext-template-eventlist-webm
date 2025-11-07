@@ -89,7 +89,6 @@
 .event-text {
     position: absolute;
     display: block;
-    text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
     top: %titleTranslateY%;
     left: %titleTranslateX%;
     transform: %titleTransform%;
@@ -104,7 +103,6 @@
     top: %numberTranslateY%;
     left: %numberTranslateX%;
     transform: %numberTransform%;
-    text-shadow: 0 0 2px #000a14, 0 0 4px #000a14, 0 0 6px #000a14;
 }
 
 @keyframes timeline-entry {
