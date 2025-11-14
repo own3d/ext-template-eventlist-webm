@@ -82,7 +82,7 @@ const videoSrc = computed(() => {
         return `${basePath}subscribe${fileExtension}.webm`;
 
       case 'gift-subscribe':
-        return `${basePath}sub-gift${fileExtension}.webm`;
+        return `${basePath}subgift${fileExtension}.webm`;
 
       case 'cheer':
         return `${basePath}cheer${fileExtension}.webm`;
@@ -91,10 +91,10 @@ const videoSrc = computed(() => {
         return `${basePath}raid${fileExtension}.webm`;
 
       case 'channel.hype_train.begin':
-        return `${basePath}hype-train${fileExtension}.webm`;
+        return `${basePath}hypetrain${fileExtension}.webm`;
 
       case 'channel.shoutout.receive':
-        return `${basePath}shout-out${fileExtension}.webm`;
+        return `${basePath}shoutout${fileExtension}.webm`;
 
       case 'charity-donation':
         return `${basePath}charity-donation${fileExtension}.webm`;
@@ -112,7 +112,7 @@ const videoSrc = computed(() => {
         return `${basePath}supersticker${fileExtension}.webm`;
 
       default:
-        return `${basePath}default${fileExtension}.webm`;
+        return `${basePath}others${fileExtension}.webm`;
 
     }
   } else {
