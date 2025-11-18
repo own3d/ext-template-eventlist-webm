@@ -353,7 +353,7 @@ const eventIconStyle = computed(() => {
         'channel.shoutout.receive': 'event-type-shoutout fa-megaphone',
         'charity-donation': 'event-type-charity-donation fa-hand-holding-heart',
         'donation': 'event-type-donation fa-hand-holding-dollar',
-        'channel-points_custom_reward_redemption.add': 'event-type-channel-points fa-coin',
+        'channel.channel_points_custom_reward_redemption.add': 'event-type-channel-points fa-coin',
         'superchat': 'event-type-superchat fa-dollar-sign',
         'supersticker': 'event-type-supersticker fa-sticky-note',
       };
