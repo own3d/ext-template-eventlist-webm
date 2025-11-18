@@ -90,6 +90,7 @@ onMounted(() => {
     // move events from queue to events
     if (eventsQueue.value.length > 0) {
       events.value.push(eventsQueue.value.shift() as NotifySub)
+      console.log(events[events.value.length - 1])
     }
 
     const maxEvents = values['max-events'] ?? 10

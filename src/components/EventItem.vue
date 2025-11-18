@@ -201,6 +201,7 @@ const EVENTS_WITH_X_MARK = [
   'raid',
   'channel.channel_points_custom_reward_redemption.add',
   'charity-donation',
+  'donation',
 ];
 const showXMark = computed(() => {
   return EVENTS_WITH_X_MARK.includes(props.event.subscription.type);
@@ -229,7 +230,7 @@ const subTitleContent = computed(() => {
       text = `${event.event.amount}`;
       break;
     case 'raid':
-      text = `× ${event.event.count}`;
+      text = `${event.event.count}`;
       break;
     case 'channel.hype_train.begin':
       text = '';
@@ -241,6 +242,9 @@ const subTitleContent = computed(() => {
       text = `${event.event.reward_cost}`;
       break;
     case 'charity-donation':
+      text = `${event.event.amount} ${event.event.currency}`;
+      break;
+    case 'donation':
       text = `${event.event.amount} ${event.event.currency}`;
       break;
     default:
@@ -348,7 +352,7 @@ const eventIconStyle = computed(() => {
         'channel.hype_train.begin': 'event-type-hype-train fa-train',
         'channel.shoutout.receive': 'event-type-shoutout fa-megaphone',
         'charity-donation': 'event-type-charity-donation fa-hand-holding-heart',
-        'donation': 'event-type-donation fa-hand-holding-money',
+        'donation': 'event-type-donation fa-hand-holding-dollar',
         'channel-points_custom_reward_redemption.add': 'event-type-channel-points fa-coin',
         'superchat': 'event-type-superchat fa-dollar-sign',
         'supersticker': 'event-type-supersticker fa-sticky-note',
