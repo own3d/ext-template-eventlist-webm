@@ -92,6 +92,8 @@
     top: %titleTranslateY%;
     left: %titleTranslateX%;
     transform: %titleTransform%;
+    line-height: 1rem;
+    white-space: nowrap;
 }
 
 .event-text span {
@@ -103,6 +105,8 @@
     top: %numberTranslateY%;
     left: %numberTranslateX%;
     transform: %numberTransform%;
+    line-height: 1rem;
+    white-space: nowrap;
 }
 
 @keyframes timeline-entry {
