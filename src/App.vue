@@ -44,7 +44,7 @@ const {on} = useSocket(extension)
 
 const events = ref<LivingEvent[]>([])
 const eventsQueue = ref<LivingEvent[]>([])
-const context = ref<ExtensionContext>({})
+const context = ref<ExtensionContext>(null)
 
 const eventListStyle = computed(() => {
   const {values} = context.value as ExtensionContext
@@ -59,8 +59,10 @@ onAuthorized(() => {
 })
 
 onContext((newContext: ExtensionContext, changed: string[]) => {
-  console.log("context", newContext)
-
+  if (!context.value) {
+    context.value = { ...newContext } as any as ExtensionContext;
+    return;
+  }
   for (const key of changed) {
     context.value[key] = newContext[key];
   }
@@ -102,6 +104,7 @@ onMounted(() => {
 })
 
 const transitionName = computed(()=>{
+  if (!context.value) return ''
   const { values} = context.value
   const  enableMovementAnimations = values['enable-movement-animations']
   if (enableMovementAnimations) {

@@ -12,7 +12,7 @@ const supportedEvents = [
     'channel.shoutout.receive',
     'channel.channel_points_custom_reward_redemption.add',
     'charity-donation',
-    'superchat' +
+    'superchat',
     'supersticker',
     'donation',
 ]
