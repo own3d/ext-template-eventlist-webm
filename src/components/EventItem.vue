@@ -202,6 +202,8 @@ const EVENTS_WITH_X_MARK = [
   'channel.channel_points_custom_reward_redemption.add',
   'charity-donation',
   'donation',
+  'superchat',
+  'supersticker',
 ];
 const showXMark = computed(() => {
   return EVENTS_WITH_X_MARK.includes(props.event.subscription.type);
