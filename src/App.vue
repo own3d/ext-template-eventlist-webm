@@ -60,11 +60,12 @@ onAuthorized(() => {
 
 onContext((newContext: ExtensionContext, changed: string[]) => {
   if (!context.value) {
-    context.value = newContext as ExtensionContext
-    return
+    console.log({newContext})
+    context.value = { ...newContext } as any as ExtensionContext;
+    return;
   }
   for (const key of changed) {
-    context.value[key] = newContext[key]
+    context.value[key] = newContext[key];
   }
 })
 
@@ -90,7 +91,6 @@ onMounted(() => {
     // move events from queue to events
     if (eventsQueue.value.length > 0) {
       const item = eventsQueue.value.shift() as NotifySub
-      console.log({item})
       events.value.push(item)
     }
 
