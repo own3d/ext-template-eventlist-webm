@@ -178,6 +178,15 @@ const titleTextContent = computed(() => {
     case 'charity-donation':
       text = `${name}`;
       break;
+    case 'donation':
+      text = `${name}`;
+      break;
+    case 'superchat':
+      text = `${name}`;
+      break;
+    case 'supersticker':
+      text = `${name}`;
+      break;
     default:
       text = '';
   }
@@ -248,6 +257,12 @@ const subTitleContent = computed(() => {
       break;
     case 'donation':
       text = `${event.event.amount} ${event.event.currency}`;
+      break;
+    case 'superchat':
+      text = ``;
+      break;
+    case 'supersticker':
+      text = ``;
       break;
     default:
       text = '';
