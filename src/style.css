@@ -76,7 +76,7 @@
 .event-icon i.event-type-donation {
     color: %donationIconColor% !important; /* green */
 }
-.event-icon i.event-type-reward-redemption {
+.event-icon i.event-type-channel-points {
     color: %channelPointsIconColor% !important; /* cyan */
 }
 .event-icon i.event-type-superchat {
