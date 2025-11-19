@@ -106,6 +106,7 @@ onMounted(() => {
 const transitionName = computed(()=>{
   if (!context.value) return ''
   const { values} = context.value
+  if (!values) return ''
   const  enableMovementAnimations = values['enable-movement-animations']
   if (enableMovementAnimations) {
     return 'items-slide'
