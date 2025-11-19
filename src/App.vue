@@ -44,7 +44,7 @@ const {on} = useSocket(extension)
 
 const events = ref<LivingEvent[]>([])
 const eventsQueue = ref<LivingEvent[]>([])
-const context = ref<ExtensionContext>(null)
+const context = ref<ExtensionContext>({})
 
 const eventListStyle = computed(() => {
   const {values} = context.value as ExtensionContext
@@ -59,11 +59,8 @@ onAuthorized(() => {
 })
 
 onContext((newContext: ExtensionContext, changed: string[]) => {
-  if (!context.value) {
-    console.log({newContext})
-    context.value = { ...newContext } as any as ExtensionContext;
-    return;
-  }
+  console.log("context", newContext)
+
   for (const key of changed) {
     context.value[key] = newContext[key];
   }
